@@ -2,15 +2,15 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    app: ['webpack/hot/dev-server', './javascripts/entry.js']
+    app: ['webpack/hot/dev-server', './src/components/base.js']
   },
   output: {
-    path: __dirname + '/public/built',
+    path: __dirname + '/html/built',
     filename: 'bundle.js',
     publicPath: 'http://localhost:8080/built/'
   },
   devServer: {
-    contentBase: './public',
+    contentBase: './html',
     publicPath: 'http://localhost:8080/built/'
   },
   module: {

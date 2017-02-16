@@ -3,9 +3,9 @@
 require('../less/main.less');
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Login from './components/login';
+import Login from './login';
 
-document.title = 'Booth Tool ' + require('../package.json').version;
+document.title = 'Booth Tool ' + require('../../package.json').version;
 
 ReactDOM.render(
   <Login />,

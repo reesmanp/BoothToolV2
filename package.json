@@ -2,7 +2,7 @@
   "name": "electronApp",
   "version": "0.0.1",
   "description": "Trying to figure out how to use Electron, React, and React Native together",
-  "main": "main.js",
+  "main": "./src/index.desktop.js",
   "babel": {
     "presets": [
       "react",
