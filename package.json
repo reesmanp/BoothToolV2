@@ -1,0 +1,41 @@
+{
+  "name": "electronApp",
+  "version": "0.0.1",
+  "description": "Trying to figure out how to use Electron, React, and React Native together",
+  "main": "main.js",
+  "babel": {
+    "presets": [
+      "react",
+      "es2015"
+    ]
+  },
+  "scripts": {
+    "start": "./node_modules/electron-prebuilt/dist/Electron.app/Contents/MacOS/Electron .",
+    "watch": "./node_modules/.bin/webpack-dev-server",
+    "electron-rebuild": "./node_modules/.bin/electron-rebuild"
+  },
+  "repository": {},
+  "author": "Paul Reesman <Paul.R.Reesman@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.1",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.23.0",
+    "css-loader": "^0.26.1",
+    "electron-packager": "^8.5.1",
+    "electron-rebuild": "^1.5.7",
+    "less": "^2.7.2",
+    "less-loader": "^2.2.3",
+    "node-libs-browser": "^2.0.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.3.0"
+  },
+  "dependencies": {
+    "electron-prebuilt": "^1.4.13",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  }
+}
