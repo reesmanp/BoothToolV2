@@ -1,14 +1,26 @@
-@body-bg: #006aa7;
-@myDiv-fg: #f00;
+@import 'variables';
 
-body {
-  background-color: @body-bg;
+html, body, div {
+  height: 100%;
+  margin: 0;
 }
 
-div.myDiv {
-  color: @myDiv-fg;
+div.BackgroundColor-bg {
+  background-color: @body-bg;
+  padding-left: 12.5%;
+  padding-right: 12.5%;
+
+  div.BackgroundColor-fg {
+    background-color: @body-fg;
+    padding: 5%;
+  }
 }
 
 div.loginDiv {
   text-align: center;
+}
+
+h1 {
+  padding: 15%;
+  font-size: -webkit-xxx-large;
 }
