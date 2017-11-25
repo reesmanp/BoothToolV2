@@ -2,7 +2,7 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    app: ['webpack/hot/dev-server', './views/components/base.js']
+    app: ['webpack/hot/dev-server', './views/components/Base.tsx']
   },
   output: {
     path: `${__dirname}/dist`,
@@ -12,6 +12,9 @@ module.exports = {
   devServer: {
     contentBase: './html',
     publicPath: 'http://localhost:8080/built/'
+  },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.json']
   },
   module: {
     rules: [

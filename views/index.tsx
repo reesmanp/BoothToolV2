@@ -7,7 +7,7 @@ const createWindow = () => {
   win = new BrowserWindow({width: 800, height: 600});
 
   win.loadURL(url.format({
-    pathname: `${__dirname}/index.html`,
+    pathname: `${__dirname}/../index.html`,
     protocol: 'file:',
     slashes: true
   }));

@@ -15,7 +15,7 @@ const initialState = Map({
 export const auth = (state = initialState.get('auth'), action: Action) => {
   switch (action.type) {
     case Actions.LOGIN:
-      return state.set('token', token);
+      return state.set('token', action.token);
     default:
       return state;
   }
