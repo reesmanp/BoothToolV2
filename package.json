@@ -2,12 +2,11 @@
   "name": "BoothTool",
   "version": "0.0.1",
   "description": "A booth tool built in TypeScript, React, and LESS for Electron",
-  "main": "./dist/boothtool.js",
+  "main": "./dist/app.js",
   "scripts": {
     "build": "webpack -p --progress",
-    "start": "electron .",
-    "watch": "webpack-dev-server",
-    "electron-rebuild": "electron-rebuild"
+    "rebuild": "electron-rebuild",
+    "start": "electron ."
   },
   "dependencies": {
     "@types/history": "^4.6.2",
@@ -31,10 +30,10 @@
     "awesome-typescript-loader": "^3.4.0",
     "css-loader": "^0.28.7",
     "electron": "^1.7.9",
+    "electron-rebuild": "^1.6.0",
     "source-map-loader": "^0.2.3",
     "style-loader": "^0.19.0",
     "typescript": "^2.6.1",
-    "url": "^0.11.0",
     "webpack": "^3.8.1"
   },
   "author": "Paul Reesman <Paul.R.Reesman@gmail.com>",

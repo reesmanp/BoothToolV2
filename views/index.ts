@@ -1,16 +1,11 @@
 import { app, BrowserWindow } from 'electron';
-import * as url from 'url';
 
 let win;
 
 const createWindow = () => {
   win = new BrowserWindow({width: 800, height: 600});
 
-  win.loadURL(url.format({
-    pathname: `${__dirname}/../index.html`,
-    protocol: 'file:',
-    slashes: true
-  }));
+  win.loadURL(`file://${__dirname}/../views/index.html`);
 
   win.webContents.openDevTools();
 

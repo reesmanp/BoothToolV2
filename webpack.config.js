@@ -2,20 +2,17 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    app: ['webpack/hot/dev-server', './views/components/Base.tsx']
+    boothtool: './views/components/Base.tsx',
+    app: './views/index.ts'
   },
   output: {
     path: `${__dirname}/dist`,
-    filename: 'boothtool.js',
-    publicPath: 'http://localhost:8080/built/'
-  },
-  devServer: {
-    contentBase: './html',
-    publicPath: 'http://localhost:8080/built/'
+    filename: '[name].js'
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json']
   },
+  target: 'electron',
   module: {
     rules: [
       // All files with a '.scss' extension will be handled by 'sass-loader'.
@@ -43,5 +40,9 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.IgnorePlugin(new RegExp("^(fs|ipc)$"))
-  ]
+  ],
+  node: {
+    __dirname: false,
+    __filename: false
+  }
 };
