@@ -4,7 +4,9 @@
   "description": "A booth tool built in TypeScript, React, and LESS for Electron",
   "main": "./dist/app.js",
   "scripts": {
-    "build": "webpack -p --progress",
+    "build": "webpack -p --progress --colors",
+    "dev": "NODE_ENV='development' webpack --progress --colors",
+    "prod": "NODE_ENV='production' webpack -p --progress --colors",
     "rebuild": "electron-rebuild",
     "start": "electron ."
   },

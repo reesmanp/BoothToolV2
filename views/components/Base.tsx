@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import { combineReducers } from 'redux-immutable';
 import { Provider } from 'react-redux';
 import createHistory from 'history/createHashHistory';
 import { Route } from 'react-router';
@@ -21,7 +22,7 @@ const store = createStore(
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <div>
+      <div className='section'>
         <Route path='/' component={Home}/>
         <Route path='/login' component={Login}/>
       </div>
