@@ -7,7 +7,7 @@ const createWindow = () => {
 
   win.loadURL(`file://${__dirname}/../views/index.html`);
 
-  win.webContents.openDevTools();
+  process.env.NODE_ENV !== 'production' && win.webContents.openDevTools();
 
   win.on('closed', () => win = null);
 };

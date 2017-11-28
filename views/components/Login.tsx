@@ -5,56 +5,58 @@ import { authActions as Actions } from '../actions';
 interface LoginProps {
   history: any;
   isAuthorized: boolean;
+  token: string;
+  username: string;
+  password: string;
   authorizationSuccessful: (token: string) => undefined;
+  setUsername: (name: string) => undefined;
+  setPassword: (phrase: string) => undefined;
 }
 
 const mapStateToProps = state => ({
-  isAuthorized: !!state.getIn(['auth', 'token'])
+  isAuthorized: !!state.getIn(['auth', 'token']),
+  token: state.getIn(['auth', 'token']),
+  username: state.getIn(['auth', 'username']),
+  password: state.getIn(['auth', 'password'])
 });
 
 const mapDispatchToProps = dispatch => ({
-  authorizationSuccessful: (token: string) => dispatch(Actions.login(token))
+  authorizationSuccessful: (token: string) => dispatch(Actions.login(token)),
+  setUsername: (name: string) => dispatch(Actions.username(name)),
+  setPassword: (phrase: string) => dispatch(Actions.password(phrase))
 });
 
-const credentials = {
-  username: '',
-  password: ''
-};
-
-// Accepts a string and
+// Accepts a dispatch function and
 // returns a function that takes in an event and
-// applies the value to the correlating key in credentials
-const onChange = (key: string) => (
-  event => credentials[key] = event.target.value || ''
+// dispatches the event value
+const onChange = (dispatch: (_: string) => undefined) => (
+  event => dispatch(event.target.value)
 );
 
-// Validates username and password in credentials
+// Validates username and password in store
 // if successful, generates token and
 // dispatches authorization and changes route to '/'
-const onAuthorize = (props: LoginProps) => (
-  event => {
-    event.preventDefault();
-    // TODO: add database lookup here
-    const token = '1234567890';
-    if (credentials.username && credentials.password) {
-      props.authorizationSuccessful(token);
-      //props.history.push('/');
-    }
+const onAuthorize = (props: LoginProps) => {
+  // TODO: add database lookup here
+  const token = '1234567890';
+  if (props.username && props.password) {
+    props.authorizationSuccessful(token);
+    //props.history.push('/');
   }
-);
+};
 
 const preLogin = (props: LoginProps) => (
   <div className='container is-fluid'>
     <div className='field'>
       <label className='label'>Username</label>
       <div className='control'>
-        <input className='input' type='text' placeholder='Username' onChange={onChange('username')}/>
+        <input className='input' type='text' placeholder='Username' onChange={onChange(props.setUsername)}/>
       </div>
     </div>
     <div className='field'>
       <label className='label'>Password</label>
       <div className='control has-icons-left'>
-        <input className='input' type='password' placeholder='Password' onChange={onChange('password')}/>
+        <input className='input' type='password' placeholder='Password' onChange={onChange(props.setPassword)}/>
         <span className='icon is-small is-left'>
           <i className='fa fa-lock' />
         </span>
@@ -62,7 +64,7 @@ const preLogin = (props: LoginProps) => (
     </div>
     <div className='field'>
       <div className='control'>
-        <button className='button is-link' onClick={onAuthorize(props)}>Login</button>
+        <button className='button is-link' onClick={() => onAuthorize(props)}>Login</button>
       </div>
     </div>
   </div>

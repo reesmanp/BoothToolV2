@@ -36,7 +36,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "19055f104be533d91c43"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "3ec6943a4e4def6d38d0"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -697,23 +697,23 @@
 /******/ 	__webpack_require__.h = function() { return hotCurrentHash; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return hotCreateRequire(115)(__webpack_require__.s = 115);
+/******/ 	return hotCreateRequire(116)(__webpack_require__.s = 116);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 115:
+/***/ 116:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var electron_1 = __webpack_require__(116);
+var electron_1 = __webpack_require__(117);
 var win;
 var createWindow = function () {
     win = new electron_1.BrowserWindow({ width: 800, height: 600 });
     win.loadURL("file://" + __dirname + "/../views/index.html");
-    win.webContents.openDevTools();
+    process.env.NODE_ENV !== 'production' && win.webContents.openDevTools();
     win.on('closed', function () { return win = null; });
 };
 electron_1.app.on('ready', createWindow);
@@ -723,7 +723,7 @@ electron_1.app.on('activate', function () { return win === null && createWindow(
 
 /***/ }),
 
-/***/ 116:
+/***/ 117:
 /***/ (function(module, exports) {
 
 module.exports = require("electron");
