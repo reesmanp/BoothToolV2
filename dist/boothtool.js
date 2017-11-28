@@ -36,7 +36,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "3ec6943a4e4def6d38d0"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "25b31c0876f47ed30c1e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -30674,12 +30674,11 @@ var react_redux_1 = __webpack_require__(16);
 var actions_1 = __webpack_require__(48);
 var mapStateToProps = function (state) { return ({
     isAuthorized: !!state.getIn(['auth', 'token']),
-    token: state.getIn(['auth', 'token']),
     username: state.getIn(['auth', 'username']),
     password: state.getIn(['auth', 'password'])
 }); };
 var mapDispatchToProps = function (dispatch) { return ({
-    authorizationSuccessful: function (token) { return dispatch(actions_1.authActions.login(token)); },
+    setToken: function (token) { return dispatch(actions_1.authActions.login(token)); },
     setUsername: function (name) { return dispatch(actions_1.authActions.username(name)); },
     setPassword: function (phrase) { return dispatch(actions_1.authActions.password(phrase)); }
 }); };
@@ -30694,7 +30693,7 @@ var onAuthorize = function (props) {
     // TODO: add database lookup here
     var token = '1234567890';
     if (props.username && props.password) {
-        props.authorizationSuccessful(token);
+        props.setToken(token);
         //props.history.push('/');
     }
 };

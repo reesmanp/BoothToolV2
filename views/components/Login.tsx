@@ -5,23 +5,21 @@ import { authActions as Actions } from '../actions';
 interface LoginProps {
   history: any;
   isAuthorized: boolean;
-  token: string;
   username: string;
   password: string;
-  authorizationSuccessful: (token: string) => undefined;
+  setToken: (token: string) => undefined;
   setUsername: (name: string) => undefined;
   setPassword: (phrase: string) => undefined;
 }
 
 const mapStateToProps = state => ({
   isAuthorized: !!state.getIn(['auth', 'token']),
-  token: state.getIn(['auth', 'token']),
   username: state.getIn(['auth', 'username']),
   password: state.getIn(['auth', 'password'])
 });
 
 const mapDispatchToProps = dispatch => ({
-  authorizationSuccessful: (token: string) => dispatch(Actions.login(token)),
+  setToken: (token: string) => dispatch(Actions.login(token)),
   setUsername: (name: string) => dispatch(Actions.username(name)),
   setPassword: (phrase: string) => dispatch(Actions.password(phrase))
 });
@@ -40,7 +38,7 @@ const onAuthorize = (props: LoginProps) => {
   // TODO: add database lookup here
   const token = '1234567890';
   if (props.username && props.password) {
-    props.authorizationSuccessful(token);
+    props.setToken(token);
     //props.history.push('/');
   }
 };
