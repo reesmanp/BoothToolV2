@@ -9,6 +9,8 @@ import reducers from '../reducers';
 import Home from './Home';
 import Login from './Login';
 
+import '../sass/index.scss';
+
 const history = createHistory();
 const store = createStore(
   reducers,
@@ -19,7 +21,7 @@ ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <div className='section'>
-        <Route path='/' component={Home}/>
+        <Route exact path='/' component={Home}/>
         <Route path='/login' component={Login}/>
       </div>
     </ConnectedRouter>

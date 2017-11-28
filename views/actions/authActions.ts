@@ -4,6 +4,11 @@ const login = (token: string) => ({
   value: token
 });
 
+const LOGOUT = 'LOGOUT';
+const logout = () => ({
+  type: LOGOUT
+});
+
 const USERNAME = 'USERNAME';
 const username = (name: string) => ({
   type: USERNAME,
@@ -19,6 +24,8 @@ const password = (phrase: string) => ({
 export const authActions = {
   LOGIN: LOGIN,
   login: login,
+  LOGOUT: LOGOUT,
+  logout: logout,
   USERNAME: USERNAME,
   username: username,
   PASSWORD: PASSWORD,

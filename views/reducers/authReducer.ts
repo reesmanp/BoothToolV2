@@ -18,6 +18,8 @@ export const auth = (state = initialState.get('auth'), action: Action) => {
   switch (action.type) {
     case Actions.LOGIN:
       return state.set('token', action.value);
+    case Actions.LOGOUT:
+      return state.set('token', null);
     case Actions.USERNAME:
       return state.set('username', action.value);
     case Actions.PASSWORD:

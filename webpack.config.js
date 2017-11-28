@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -16,16 +17,7 @@ module.exports = {
   module: {
     rules: [
       // All files with a '.scss' extension will be handled by 'sass-loader'.
-      {
-        test: /\.less$/,
-        use: [{
-          loader: 'style-loader'
-        }, {
-          loader: 'css-loader'
-        }, {
-          loader: 'less-loader'
-        }]
-      },
+      { test: /\.scss$/, loader: ExtractTextWebpackPlugin.extract('css-loader!sass-loader') },
 
       // All files with a '.css' extension will be handled by 'css-loader'.
       { test: /\.css$/, loader: 'css-loader' },
@@ -38,8 +30,11 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.IgnorePlugin(new RegExp("^(fs|ipc)$"))
+    new webpack.IgnorePlugin(new RegExp("^(fs|ipc)$")),
+    new ExtractTextWebpackPlugin({
+      filename: 'boothtool.css',
+      allChunks: true
+    })
   ],
   node: {
     __dirname: false,

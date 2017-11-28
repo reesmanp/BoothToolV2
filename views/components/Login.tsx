@@ -39,7 +39,6 @@ const onAuthorize = (props: LoginProps) => {
   const token = '1234567890';
   if (props.username && props.password) {
     props.setToken(token);
-    //props.history.push('/');
   }
 };
 
@@ -60,16 +59,20 @@ const preLogin = (props: LoginProps) => (
         </span>
       </div>
     </div>
-    <div className='field'>
-      <div className='control'>
-        <button className='button is-link' onClick={() => onAuthorize(props)}>Login</button>
+    <div className='field is-grouped columns'>
+      <div className='control column'>
+        <button className='button is-success' onClick={() => onAuthorize(props)}>Login</button>
+      </div>
+      <div className='column'/>
+      <div className='control column'>
+        <button className='button is-info' onClick={() => null}>Create Account</button>
       </div>
     </div>
   </div>
 );
 
 const postLogin = (props: LoginProps) => (
-  <div className='container is-fluid'>
+  <div className='container is-fluid has-text-centered'>
     <h2>You are logged in!</h2>
     <button className='button is-text' onClick={() => props.history.push('/')}>
       Return Home
