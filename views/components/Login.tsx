@@ -48,6 +48,9 @@ const preLogin = (props: LoginProps) => (
       <label className='label'>Username</label>
       <div className='control'>
         <input className='input' type='text' placeholder='Username' onChange={onChange(props.setUsername)}/>
+        <span className='icon is-small is-left'>
+          <i className='fa fa-user'/>
+        </span>
       </div>
     </div>
     <div className='field'>

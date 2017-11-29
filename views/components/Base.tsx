@@ -8,6 +8,7 @@ import { ConnectedRouter, routerMiddleware, push } from 'react-router-redux';
 import reducers from '../reducers';
 import Home from './Home';
 import Login from './Login';
+import SignUp from './SignUp';
 
 import '../sass/index.scss';
 
@@ -23,6 +24,7 @@ ReactDOM.render(
       <div className='section'>
         <Route exact path='/' component={Home}/>
         <Route path='/login' component={Login}/>
+        <Route path='/signup' component={SignUp}/>
       </div>
     </ConnectedRouter>
   </Provider>,

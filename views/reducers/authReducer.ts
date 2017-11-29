@@ -7,14 +7,12 @@ interface Action {
 }
 
 const initialState = Map({
-  auth: Map({
-    token: null,
-    username: null,
-    password: null
-  })
+  token: null,
+  username: null,
+  password: null
 });
 
-export const auth = (state = initialState.get('auth'), action: Action) => {
+export const auth = (state = initialState, action: Action) => {
   switch (action.type) {
     case Actions.LOGIN:
       return state.set('token', action.value);
