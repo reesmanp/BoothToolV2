@@ -76,8 +76,8 @@ const preLogin = (props: LoginProps) => (
 
 const postLogin = (props: LoginProps) => (
   <div className='container is-fluid has-text-centered'>
-    <h2>You are logged in!</h2>
-    <button className='button is-text' onClick={() => props.history.push('/')}>
+    <label className='label is-medium'>You are logged in!</label>
+    <button className='button is-success' onClick={() => props.history.push('/')}>
       Return Home
     </button>
   </div>

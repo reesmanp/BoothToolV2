@@ -60,18 +60,18 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 120);
+/******/ 	return __webpack_require__(__webpack_require__.s = 121);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 120:
+/***/ 121:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var electron_1 = __webpack_require__(121);
+var electron_1 = __webpack_require__(122);
 var win;
 var createWindow = function () {
     win = new electron_1.BrowserWindow({ width: 800, height: 600 });
@@ -86,7 +86,7 @@ electron_1.app.on('activate', function () { return win === null && createWindow(
 
 /***/ }),
 
-/***/ 121:
+/***/ 122:
 /***/ (function(module, exports) {
 
 module.exports = require("electron");

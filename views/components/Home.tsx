@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { authActions as Actions } from '../actions';
+import Banner from './Banner';
 
 interface HomeProps {
   history: any;
@@ -15,7 +15,13 @@ const mapDispatchToState = dispatch => ({
 });
 
 const onClick = (route: string, history: any) => (
-  event => history.location.pathname === '/' && history.push(route)
+  () => history.location.pathname === '/' && history.push(route)
+);
+
+const renderHome = (props: HomeProps) => (
+  <div className='container is-fluid'>
+    <label className='label is-large has-text-centered'>Welcome!</label>
+  </div>
 );
 
 const renderLoginOrSignUpRedirect = history => (
@@ -33,7 +39,7 @@ const renderLoginOrSignUpRedirect = history => (
 
 const HomeComponent = (props: HomeProps) => (
   props.isAuthorized
-    ? <h2>Welcome!</h2>
+    ? renderHome(props)
     : renderLoginOrSignUpRedirect(props.history)
 );
 

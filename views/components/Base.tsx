@@ -6,6 +6,7 @@ import createHistory from 'history/createHashHistory';
 import { Route } from 'react-router';
 import { ConnectedRouter, routerMiddleware, push } from 'react-router-redux';
 import reducers from '../reducers';
+import Banner from './Banner';
 import Home from './Home';
 import Login from './Login';
 import SignUp from './SignUp';
@@ -21,10 +22,13 @@ const store = createStore(
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <div className='section'>
-        <Route exact path='/' component={Home}/>
-        <Route path='/login' component={Login}/>
-        <Route path='/signup' component={SignUp}/>
+      <div>
+        <Banner/>
+        <div className='section'>
+          <Route exact path='/' component={Home}/>
+          <Route path='/login' component={Login}/>
+          <Route path='/signup' component={SignUp}/>
+        </div>
       </div>
     </ConnectedRouter>
   </Provider>,
