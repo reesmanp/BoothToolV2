@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import Banner from './Banner';
 
 interface HomeProps {
   history: any;
@@ -27,10 +26,10 @@ const renderHome = (props: HomeProps) => (
 const renderLoginOrSignUpRedirect = history => (
   <div className='container is-fluid'>
     <div className='field is-grouped columns'>
-      <div className='control column'>
+      <div className='control column has-text-centered'>
         <button className='button is-success' onClick={onClick('/login', history)}>Sign In</button>
       </div>
-      <div className='control column'>
+      <div className='control column has-text-centered'>
         <button className='button is-success' onClick={onClick('/signup', history)}>Sign Up</button>
       </div>
     </div>

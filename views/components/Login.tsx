@@ -63,11 +63,11 @@ const preLogin = (props: LoginProps) => (
       </div>
     </div>
     <div className='field is-grouped columns'>
-      <div className='control column'>
+      <div className='control column has-text-centered'>
         <button className='button is-success' onClick={() => onAuthorize(props)}>Login</button>
       </div>
       <div className='column'/>
-      <div className='control column'>
+      <div className='control column has-text-centered'>
         <button className='button is-info' onClick={() => props.history.push('/signup')}>Create Account</button>
       </div>
     </div>

@@ -23,7 +23,7 @@ ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <div>
-        <Banner/>
+        <Route component={Banner}/>
         <div className='section'>
           <Route exact path='/' component={Home}/>
           <Route path='/login' component={Login}/>

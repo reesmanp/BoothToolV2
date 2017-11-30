@@ -8114,7 +8114,7 @@ var store = redux_1.createStore(reducers_1.default, redux_1.applyMiddleware(reac
 ReactDOM.render(React.createElement(react_redux_1.Provider, { store: store },
     React.createElement(react_router_redux_1.ConnectedRouter, { history: history },
         React.createElement("div", null,
-            React.createElement(Banner_1.default, null),
+            React.createElement(react_router_1.Route, { component: Banner_1.default }),
             React.createElement("div", { className: 'section' },
                 React.createElement(react_router_1.Route, { exact: true, path: '/', component: Home_1.default }),
                 React.createElement(react_router_1.Route, { path: '/login', component: Login_1.default }),
@@ -30118,7 +30118,17 @@ var React = __webpack_require__(0);
 var react_redux_1 = __webpack_require__(7);
 var mapStateToProps = function (state) { return ({}); };
 var mapDispatchToProps = function (dispatch) { return ({}); };
-var BannerComponent = function (props) { return (React.createElement("nav", { className: 'navbar is-success', role: 'navigation', "aria-label": 'main navigation' })); };
+var anchorTagOnClick = function (route, history) { return (function (event) { return event.preventDefault() && history.push(route); }); };
+var BannerComponent = function (props) { return (React.createElement("nav", { className: 'navbar is-success', role: 'navigation', "aria-label": 'main navigation' },
+    React.createElement("div", { className: 'navbar-brand' },
+        React.createElement("div", { className: 'navbar-item' }, "BoothTool V2"),
+        React.createElement("div", { className: 'navbar-burger burger' },
+            React.createElement("span", null),
+            React.createElement("span", null),
+            React.createElement("span", null))),
+    React.createElement("div", { className: 'navbar-menu is-active' },
+        React.createElement("div", { className: 'navbar-start' },
+            React.createElement("a", { className: 'navbar-item is-tab', onClick: anchorTagOnClick('/', props.history) }, "Home"))))); };
 var Banner = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(BannerComponent);
 exports.default = Banner;
 
@@ -30141,9 +30151,9 @@ var renderHome = function (props) { return (React.createElement("div", { classNa
     React.createElement("label", { className: 'label is-large has-text-centered' }, "Welcome!"))); };
 var renderLoginOrSignUpRedirect = function (history) { return (React.createElement("div", { className: 'container is-fluid' },
     React.createElement("div", { className: 'field is-grouped columns' },
-        React.createElement("div", { className: 'control column' },
+        React.createElement("div", { className: 'control column has-text-centered' },
             React.createElement("button", { className: 'button is-success', onClick: onClick('/login', history) }, "Sign In")),
-        React.createElement("div", { className: 'control column' },
+        React.createElement("div", { className: 'control column has-text-centered' },
             React.createElement("button", { className: 'button is-success', onClick: onClick('/signup', history) }, "Sign Up"))))); };
 var HomeComponent = function (props) { return (props.isAuthorized
     ? renderHome(props)
@@ -30200,10 +30210,10 @@ var preLogin = function (props) { return (React.createElement("div", { className
             React.createElement("span", { className: 'icon is-small is-left' },
                 React.createElement("i", { className: 'fa fa-lock' })))),
     React.createElement("div", { className: 'field is-grouped columns' },
-        React.createElement("div", { className: 'control column' },
+        React.createElement("div", { className: 'control column has-text-centered' },
             React.createElement("button", { className: 'button is-success', onClick: function () { return onAuthorize(props); } }, "Login")),
         React.createElement("div", { className: 'column' }),
-        React.createElement("div", { className: 'control column' },
+        React.createElement("div", { className: 'control column has-text-centered' },
             React.createElement("button", { className: 'button is-info', onClick: function () { return props.history.push('/signup'); } }, "Create Account"))))); };
 var postLogin = function (props) { return (React.createElement("div", { className: 'container is-fluid has-text-centered' },
     React.createElement("label", { className: 'label is-medium' }, "You are logged in!"),
