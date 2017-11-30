@@ -46,7 +46,7 @@ const preLogin = (props: LoginProps) => (
   <div className='container is-fluid'>
     <div className='field'>
       <label className='label'>Username</label>
-      <div className='control'>
+      <div className='control has-icons-left'>
         <input className='input' type='text' placeholder='Username' onChange={onChange(props.setUsername)}/>
         <span className='icon is-small is-left'>
           <i className='fa fa-user'/>
@@ -68,7 +68,7 @@ const preLogin = (props: LoginProps) => (
       </div>
       <div className='column'/>
       <div className='control column'>
-        <button className='button is-info' onClick={() => null}>Create Account</button>
+        <button className='button is-info' onClick={() => props.history.push('/signup')}>Create Account</button>
       </div>
     </div>
   </div>

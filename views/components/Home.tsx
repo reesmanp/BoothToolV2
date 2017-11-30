@@ -14,15 +14,27 @@ const mapStateToProps = state => ({
 const mapDispatchToState = dispatch => ({
 });
 
-const renderLoginRedirect = history => {
-  history.location.pathname === '/' && history.push('/login');
-  return null;
-};
+const onClick = (route: string, history: any) => (
+  event => history.location.pathname === '/' && history.push(route)
+);
+
+const renderLoginOrSignUpRedirect = history => (
+  <div className='container is-fluid'>
+    <div className='field is-grouped columns'>
+      <div className='control column'>
+        <button className='button is-success' onClick={onClick('/login', history)}>Sign In</button>
+      </div>
+      <div className='control column'>
+        <button className='button is-success' onClick={onClick('/signup', history)}>Sign Up</button>
+      </div>
+    </div>
+  </div>
+);
 
 const HomeComponent = (props: HomeProps) => (
   props.isAuthorized
     ? <h2>Welcome!</h2>
-    : renderLoginRedirect(props.history)
+    : renderLoginOrSignUpRedirect(props.history)
 );
 
 const Home = connect(mapStateToProps, mapDispatchToState)(HomeComponent);
