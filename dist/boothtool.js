@@ -30126,7 +30126,7 @@ var BannerComponent = function (props) { return (React.createElement("nav", { cl
             React.createElement("span", null),
             React.createElement("span", null),
             React.createElement("span", null))),
-    React.createElement("div", { className: 'navbar-menu is-active' },
+    React.createElement("div", { className: 'navbar-menu' },
         React.createElement("div", { className: 'navbar-start' },
             React.createElement("a", { className: 'navbar-item is-tab', onClick: anchorTagOnClick('/', props.history) }, "Home"))))); };
 var Banner = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(BannerComponent);
@@ -30210,10 +30210,10 @@ var preLogin = function (props) { return (React.createElement("div", { className
             React.createElement("span", { className: 'icon is-small is-left' },
                 React.createElement("i", { className: 'fa fa-lock' })))),
     React.createElement("div", { className: 'field is-grouped columns' },
-        React.createElement("div", { className: 'control column has-text-centered' },
+        React.createElement("div", { className: 'control column has-text-left' },
             React.createElement("button", { className: 'button is-success', onClick: function () { return onAuthorize(props); } }, "Login")),
         React.createElement("div", { className: 'column' }),
-        React.createElement("div", { className: 'control column has-text-centered' },
+        React.createElement("div", { className: 'control column has-text-right' },
             React.createElement("button", { className: 'button is-info', onClick: function () { return props.history.push('/signup'); } }, "Create Account"))))); };
 var postLogin = function (props) { return (React.createElement("div", { className: 'container is-fluid has-text-centered' },
     React.createElement("label", { className: 'label is-medium' }, "You are logged in!"),
@@ -30254,8 +30254,8 @@ var SignUpComponent = function (props) { return (React.createElement("div", { cl
                 React.createElement("i", { className: formIconList[idx] }))))); }),
     React.createElement("div", { className: 'field is-grouped columns' },
         React.createElement("div", { className: 'control column' },
-            React.createElement("button", { className: 'button is-success', disabled: !props.isFormComplete, onClick: function () { return props.history.push('/'); } /* TODO: Add to DB */ }, "Submit")),
-        React.createElement("div", { className: 'control column' },
+            React.createElement("button", { className: 'button is-success has-text-left', disabled: !props.isFormComplete, onClick: function () { return props.history.push('/'); } /* TODO: Add to DB */ }, "Submit")),
+        React.createElement("div", { className: 'control column has-text-right' },
             React.createElement("button", { className: 'button is-info', onClick: function () { return props.history.push('/'); } }, "Cancel"))))); };
 var SignUp = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(SignUpComponent);
 exports.default = SignUp;

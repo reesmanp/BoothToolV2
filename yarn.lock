@@ -224,6 +224,10 @@ atob@^2.0.0:
   version "2.0.3"
   resolved "https://registry.npmjs.org/atob/-/atob-2.0.3.tgz#19c7a760473774468f20b2d2d03372ad7d4cbf5d"
 
+atomic-write@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.npmjs.org/atomic-write/-/atomic-write-0.1.1.tgz#0e9d36885f355dc72c837c8fffb12704d9e3e6da"
+
 autoprefixer@^6.3.1:
   version "6.7.7"
   resolved "https://registry.npmjs.org/autoprefixer/-/autoprefixer-6.7.7.tgz#1dbd1c835658e35ce3f9984099db00585c782014"
@@ -2803,6 +2807,12 @@ pinkie-promise@^2.0.0:
 pinkie@^2.0.0:
   version "2.0.4"
   resolved "https://registry.npmjs.org/pinkie/-/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
+
+pocketdb@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/pocketdb/-/pocketdb-1.2.0.tgz#9ffa14ec3d1110c143f8472c17b0baeed3e4aa76"
+  dependencies:
+    atomic-write "^0.1.1"
 
 posix-character-classes@^0.1.0:
   version "0.1.1"

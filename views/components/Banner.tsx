@@ -27,7 +27,7 @@ const BannerComponent = (props: BannerProps) => (
         <span></span>
       </div>
     </div>
-    <div className='navbar-menu is-active'>
+    <div className='navbar-menu'>
       <div className='navbar-start'>
         <a className='navbar-item is-tab' onClick={anchorTagOnClick('/', props.history)}>Home</a>
       </div>

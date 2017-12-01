@@ -42,14 +42,14 @@ const SignUpComponent = (props: SignUpProps) => (
     <div className='field is-grouped columns'>
       <div className='control column'>
         <button
-          className='button is-success'
+          className='button is-success has-text-left'
           disabled={!props.isFormComplete}
           onClick={() => props.history.push('/') /* TODO: Add to DB */}
         >
           Submit
         </button>
       </div>
-      <div className='control column'>
+      <div className='control column has-text-right'>
         <button className='button is-info' onClick={() => props.history.push('/')}>Cancel</button>
       </div>
     </div>
