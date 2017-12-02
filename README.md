@@ -1,6 +1,6 @@
-#BoothTool V2
+# BoothTool V2
 
-##Roadmap
+## Roadmap
   - [X] 0.1.0 -- Typescript conversion
   - [ ] 0.2.0 -- UI and Backend user authentication
   - [ ] 0.3.0 -- User roles and Admin page
@@ -15,6 +15,6 @@
   - [ ] 0.9.0 -- Graph predictions
   - [ ] 1.0.0 -- Passed user acceptance testing
 
-##Notes
+## Notes
   * Turn on React DevTools:
     * `require('electron-react-devtools').install()`
