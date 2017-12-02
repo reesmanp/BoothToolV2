@@ -1,9 +1,8 @@
-const webpack = require('webpack');
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: {
-    boothtool: './views/components/Base.tsx',
+    boothtool: './views/components/Index.tsx',
     app: './views/index.ts'
   },
   output: {
@@ -13,7 +12,7 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json']
   },
-  target: 'electron',
+  target: 'electron-renderer',
   module: {
     rules: [
       // All files with a '.scss' extension will be handled by 'sass-loader'.
@@ -30,7 +29,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.IgnorePlugin(new RegExp("^(fs|ipc)$")),
     new ExtractTextWebpackPlugin({
       filename: 'boothtool.css',
       allChunks: true
@@ -38,6 +36,7 @@ module.exports = {
   ],
   node: {
     __dirname: false,
-    __filename: false
-  }
+    __filename: false,
+    fs: 'empty'
+  },
 };

@@ -1,14 +1,19 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { navActions as Actions} from '../actions';
 
 interface BannerProps {
-  history: any
+  history: any;
+  isActive: boolean;
+  toggleBurger: () => undefined;
 }
 
 const mapStateToProps = state => ({
+  isActive: state.getIn(['nav', 'navbarBurger'])
 });
 
 const mapDispatchToProps = dispatch => ({
+  toggleBurger: () => dispatch(Actions.toggleBurger())
 });
 
 const anchorTagOnClick = (route: string, history: any) => (
@@ -21,7 +26,7 @@ const BannerComponent = (props: BannerProps) => (
       <div className='navbar-item'>
         BoothTool V2
       </div>
-      <div className='navbar-burger burger'>
+      <div className={`navbar-burger burger ${props.isActive ? 'is-active' : ''}`} onClick={props.toggleBurger}>
         <span></span>
         <span></span>
         <span></span>

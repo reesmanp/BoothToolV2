@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux-immutable';
-import { auth } from './authReducer';
-import { nav } from './navReducer';
-import { signUp } from './signUpReducer';
+import { auth } from './auth.reducer';
+import { nav } from './nav.reducer';
+import { signUp } from './signup.reducer';
+import { conn } from './conn.reducer';
 
 const reducers = combineReducers({
   auth,
   nav,
-  signUp
+  signUp,
+  conn
 });
 
 export default reducers;
