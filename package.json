@@ -1,6 +1,6 @@
 {
   "name": "BoothTool",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A booth tool built in TypeScript, React, and LESS for Electron",
   "main": "./dist/app.js",
   "scripts": {
