@@ -34,6 +34,11 @@ const tel = (tel: string) => ({
   value: tel
 });
 
+const RESET = 'RESET';
+const reset = () => ({
+  type: RESET
+});
+
 export const signUpActions = {
   FNAME: FNAME,
   fname: fname,
@@ -46,5 +51,7 @@ export const signUpActions = {
   EMAIL: EMAIL,
   email: email,
   TEL: TEL,
-  tel: tel
+  tel: tel,
+  RESET: RESET,
+  reset: reset
 };

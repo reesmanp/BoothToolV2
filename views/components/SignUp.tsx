@@ -5,21 +5,32 @@ import { signUpActions as Actions } from '../actions';
 interface SignUpProps {
   history: any;
   isFormComplete: boolean;
+  formJSON: any;
+  userCollection: any;
   setFormInput: (_: string, __: string) => undefined;
+  cancelForm: () => undefined;
 }
 
 const mapStateToProps = state => ({
-  isFormComplete: state.get('signUp').reduce((acc: boolean, val: string) => acc ? !!val : acc, true)
+  isFormComplete: state.get('signUp').reduce((acc: boolean, val: string) => acc ? !!val : acc, true),
+  formJSON: state.get('signUp').toJS(),
+  userCollection: state.getIn(['conn', 'connections', 'users'])
 });
 
 const mapDispatchToProps = dispatch => ({
-  setFormInput: (action: string, value: string) => Object.keys(Actions) && dispatch(Actions[action](value))
+  setFormInput: (action: string, value: string) => Object.keys(Actions) && dispatch(Actions[action](value)),
+  cancelForm: () => dispatch(Actions.reset())
 });
 
+// CSS mappings
 const formInputList = ['First Name', 'Last Name', 'Username','Password', 'Email', 'Telephone'];
 const formInputTypeList = ['text', 'text', 'text', 'password', 'email', 'tel'];
 const formIconList = ['fa fa-user', 'fa fa-user', 'fa fa-id-card', 'fa fa-lock', 'fa fa-lock', 'fa fa-mobile'];
 const formActionList = ['fname', 'lname', 'uname', 'pname', 'email', 'tel'];
+
+const onClick = (dispatch: (_) => undefined, history: any, options?: any) => (
+  () => dispatch(options) && history.push('/')
+);
 
 const SignUpComponent = (props: SignUpProps) => (
   <div className='container is-fluid'>
@@ -44,13 +55,18 @@ const SignUpComponent = (props: SignUpProps) => (
         <button
           className='button is-success has-text-left'
           disabled={!props.isFormComplete}
-          onClick={() => props.history.push('/') /* TODO: Add to DB */}
+          onClick={onClick(props.userCollection.insertOne, props.history, props.formJSON)}
         >
           Submit
         </button>
       </div>
       <div className='control column has-text-right'>
-        <button className='button is-info' onClick={() => props.history.push('/')}>Cancel</button>
+        <button
+          className='button is-info'
+          onClick={onClick(props.cancelForm, props.history)}
+        >
+          Cancel
+        </button>
       </div>
     </div>
   </div>

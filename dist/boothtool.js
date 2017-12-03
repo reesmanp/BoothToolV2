@@ -30050,6 +30050,10 @@ var tel = function (tel) { return ({
     type: TEL,
     value: tel
 }); };
+var RESET = 'RESET';
+var reset = function () { return ({
+    type: RESET
+}); };
 exports.signUpActions = {
     FNAME: FNAME,
     fname: fname,
@@ -30062,7 +30066,9 @@ exports.signUpActions = {
     EMAIL: EMAIL,
     email: email,
     TEL: TEL,
-    tel: tel
+    tel: tel,
+    RESET: RESET,
+    reset: reset
 };
 
 
@@ -30093,6 +30099,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var NEW_CONN = 'NEW_CONN';
 var newConn = function (key, value) { return ({
     type: NEW_CONN,
+    key: key,
     value: value
 }); };
 exports.connActions = {
@@ -30160,6 +30167,8 @@ exports.signUp = function (state, action) {
             return state.set('email', action.value);
         case actions_1.signUpActions.TEL:
             return state.set('tel', action.value);
+        case actions_1.signUpActions.RESET:
+            return initialState;
         default:
             return state;
     }
@@ -30182,7 +30191,7 @@ exports.conn = function (state, action) {
     if (state === void 0) { state = initialState; }
     switch (action.type) {
         case actions_1.connActions.NEW_CONN:
-            return state.setIn(['connection', action.key], action.value);
+            return state.setIn(['connections', action.key], action.value);
         default:
             return state;
     }
@@ -31015,15 +31024,20 @@ var React = __webpack_require__(0);
 var react_redux_1 = __webpack_require__(9);
 var actions_1 = __webpack_require__(5);
 var mapStateToProps = function (state) { return ({
-    isFormComplete: state.get('signUp').reduce(function (acc, val) { return acc ? !!val : acc; }, true)
+    isFormComplete: state.get('signUp').reduce(function (acc, val) { return acc ? !!val : acc; }, true),
+    formJSON: state.get('signUp').toJS(),
+    userCollection: state.getIn(['conn', 'connections', 'users'])
 }); };
 var mapDispatchToProps = function (dispatch) { return ({
-    setFormInput: function (action, value) { return Object.keys(actions_1.signUpActions) && dispatch(actions_1.signUpActions[action](value)); }
+    setFormInput: function (action, value) { return Object.keys(actions_1.signUpActions) && dispatch(actions_1.signUpActions[action](value)); },
+    cancelForm: function () { return dispatch(actions_1.signUpActions.reset()); }
 }); };
+// CSS mappings
 var formInputList = ['First Name', 'Last Name', 'Username', 'Password', 'Email', 'Telephone'];
 var formInputTypeList = ['text', 'text', 'text', 'password', 'email', 'tel'];
 var formIconList = ['fa fa-user', 'fa fa-user', 'fa fa-id-card', 'fa fa-lock', 'fa fa-lock', 'fa fa-mobile'];
 var formActionList = ['fname', 'lname', 'uname', 'pname', 'email', 'tel'];
+var onClick = function (dispatch, history, options) { return (function () { return dispatch(options) && history.push('/'); }); };
 var SignUpComponent = function (props) { return (React.createElement("div", { className: 'container is-fluid' },
     formInputList.map(function (cv, idx) { return (React.createElement("div", { className: 'field', key: "SignUp_" + cv + "_" + idx },
         React.createElement("label", { className: 'label' }, cv),
@@ -31033,9 +31047,9 @@ var SignUpComponent = function (props) { return (React.createElement("div", { cl
                 React.createElement("i", { className: formIconList[idx] }))))); }),
     React.createElement("div", { className: 'field is-grouped columns' },
         React.createElement("div", { className: 'control column' },
-            React.createElement("button", { className: 'button is-success has-text-left', disabled: !props.isFormComplete, onClick: function () { return props.history.push('/'); } /* TODO: Add to DB */ }, "Submit")),
+            React.createElement("button", { className: 'button is-success has-text-left', disabled: !props.isFormComplete, onClick: onClick(props.userCollection.insertOne, props.history, props.formJSON) }, "Submit")),
         React.createElement("div", { className: 'control column has-text-right' },
-            React.createElement("button", { className: 'button is-info', onClick: function () { return props.history.push('/'); } }, "Cancel"))))); };
+            React.createElement("button", { className: 'button is-info', onClick: onClick(props.cancelForm, props.history) }, "Cancel"))))); };
 var SignUp = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(SignUpComponent);
 exports.default = SignUp;
 

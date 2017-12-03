@@ -14,7 +14,7 @@ const initialState = Map({
 export const conn = (state = initialState, action: Action) => {
   switch (action.type) {
     case Actions.NEW_CONN:
-      return state.setIn(['connection', action.key], action.value);
+      return state.setIn(['connections', action.key], action.value);
     default:
       return state;
   }

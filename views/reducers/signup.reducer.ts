@@ -29,6 +29,8 @@ export const signUp = (state = initialState, action: Action) => {
       return state.set('email', action.value);
     case Actions.TEL:
       return state.set('tel', action.value);
+    case Actions.RESET:
+      return initialState;
     default:
       return state;
   }
